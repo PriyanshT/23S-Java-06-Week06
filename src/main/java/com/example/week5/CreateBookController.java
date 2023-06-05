@@ -88,4 +88,9 @@ public class CreateBookController implements Initializable {
             finalLabel.setText(e.getMessage());
         }
     }
+
+    @FXML
+    void viewTable_onClick(ActionEvent event) {
+
+    }
 }

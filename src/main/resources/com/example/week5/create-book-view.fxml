@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.week5.CreateBookController">
     <children>
@@ -57,6 +57,14 @@
                         <Insets top="10.0" />
                     </padding>
                 </Label>
+            <HBox alignment="CENTER_RIGHT">
+               <padding>
+                  <Insets right="50.0" />
+               </padding>
+               <children>
+                  <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#viewTable_onClick" text="View Table" />
+               </children>
+            </HBox>
             </children>
         </VBox>
     </children>
