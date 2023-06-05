@@ -2,6 +2,7 @@ package com.example.week5;
 
 import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class DBUtility {
     // user, pass and connectionString
@@ -63,5 +64,39 @@ public class DBUtility {
         }
 
         return bookID;
+    }
+
+    public static ArrayList<Book> retrieveBooksFromDB(){
+        ArrayList<Book> books = new ArrayList<>();
+        String sql = "SELECT book.book_id, book.book_name, book.author, book.genre, book.price, book.is_available, COUNT(bookSales.sale_id) AS 'unit_sold'\n" +
+                "FROM book\n" +
+                "INNER JOIN bookSales\n" +
+                "ON book.book_id = bookSales.book_id\n" +
+                "GROUP BY book.book_id;";
+
+        // try with resource block
+        try(
+                Connection conn = DriverManager.getConnection(connectURL, user, pass);
+                Statement statement = conn.createStatement();
+                ResultSet resultSet = statement.executeQuery(sql);
+                ){
+            while (resultSet.next()){
+                int bookId = resultSet.getInt("book_id");
+                String bookName = resultSet.getString("book_name");
+                String author = resultSet.getString("author");
+                String genre = resultSet.getString("genre");
+                Double price = resultSet.getDouble("price");
+                Boolean available = resultSet.getBoolean("is_available");
+                int unitsSold = resultSet.getInt("unit_sold");
+
+                Book newBook = new Book(bookId, bookName, author, genre, price, available, unitsSold);
+                books.add(newBook);
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return books;
     }
 }
