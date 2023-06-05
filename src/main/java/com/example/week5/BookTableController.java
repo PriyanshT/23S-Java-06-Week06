@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
+import java.io.IOException;
+
 public class BookTableController {
     @FXML
     private TableView<Book> tableView;
@@ -32,8 +34,8 @@ public class BookTableController {
 
 
     @FXML
-    void addNewBook_onClick(ActionEvent event) {
-
+    void addNewBook_onClick(ActionEvent event) throws IOException {
+        SceneChanger.changeScenes(event, "create-book-view.fxml", "Save Book!");
     }
 
     @FXML
