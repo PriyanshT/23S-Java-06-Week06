@@ -7,7 +7,7 @@ import java.util.List;
  * This is our model
  */
 public class Book {
-    private int bookID;
+    private int bookID, booksSold;
     private String bookName, author, genre;
     private double price;
     private boolean isAvailable;
@@ -30,6 +30,12 @@ public class Book {
         setGenre(genre);
         setPrice(price);
         setAvailable(isAvailable);
+    }
+
+    // overloaded constructor with unitsSold
+    public Book(int bookID, String bookName, String author, String genre, double price, boolean isAvailable, int booksSold) {
+        this(bookID, bookName, author, genre, price, isAvailable);
+        setBooksSold(booksSold);
     }
 
     // getter and setters
@@ -108,6 +114,14 @@ public class Book {
 
     public void setAvailable(boolean available) {
         isAvailable = available;
+    }
+
+    public int getBooksSold() {
+        return booksSold;
+    }
+
+    public void setBooksSold(int booksSold) {
+        this.booksSold = booksSold;
     }
 
     @Override
