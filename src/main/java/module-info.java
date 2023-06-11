@@ -4,6 +4,6 @@ module com.example.week5 {
     requires java.sql;
 
 
-    opens com.example.week5 to javafx.fxml;
-    exports com.example.week5;
+    opens com.example.week6 to javafx.fxml;
+    exports com.example.week6;
 }

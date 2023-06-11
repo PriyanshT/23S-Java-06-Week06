@@ -1,4 +1,4 @@
-package com.example.week5;
+package com.example.week6;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

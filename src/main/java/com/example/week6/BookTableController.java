@@ -1,4 +1,4 @@
-package com.example.week5;
+package com.example.week6;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
