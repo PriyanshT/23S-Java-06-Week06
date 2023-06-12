@@ -26,7 +26,10 @@ public class BookChartController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         barChart.getData().addAll(DBUtility.retrieveBookSalesFromDB());
+    }
 
+    @FXML
+    void addChartData_onClick(ActionEvent event) {
         XYChart.Series<String, Integer> unitsSold = new XYChart.Series<>();
         unitsSold.getData().add(new XYChart.Data<>("A Clash of Kings", 20));
         unitsSold.getData().add(new XYChart.Data<>("FakeBook2", 40));

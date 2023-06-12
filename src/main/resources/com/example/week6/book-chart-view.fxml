@@ -18,7 +18,7 @@
             <Label alignment="CENTER" prefHeight="39.0" prefWidth="176.0" text="Chart View" BorderPane.alignment="CENTER" />
          </top>
          <center>
-            <BarChart fx:id="barChart" BorderPane.alignment="CENTER">
+            <BarChart fx:id="barChart" animated="false" BorderPane.alignment="CENTER">
               <xAxis>
                 <CategoryAxis fx:id="categoryAxis" side="BOTTOM" />
               </xAxis>
@@ -37,6 +37,9 @@
                </padding>
             </HBox>
          </bottom>
+         <right>
+            <Button mnemonicParsing="false" onAction="#addChartData_onClick" text="Add Chart Data" BorderPane.alignment="CENTER" />
+         </right>
       </BorderPane>
    </children>
 </AnchorPane>
