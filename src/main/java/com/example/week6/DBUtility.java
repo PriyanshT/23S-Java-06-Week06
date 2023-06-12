@@ -1,8 +1,11 @@
 package com.example.week6;
 
+import javafx.scene.chart.XYChart;
+
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class DBUtility {
     // user, pass and connectionString
@@ -98,5 +101,20 @@ public class DBUtility {
         }
 
         return books;
+    }
+
+    public static XYChart.Series<String, Integer> retrieveBookSalesFromDB() {
+        XYChart.Series<String, Integer> unitsSold = new XYChart.Series<>();
+        ArrayList<Book> books = retrieveBooksFromDB();
+
+//        unitsSold.getData().add(new XYChart.Data<>("FakeBook1", 20));
+//        unitsSold.getData().add(new XYChart.Data<>("FakeBook2", 40));
+//        unitsSold.getData().add(new XYChart.Data<>("FakeBook3", 60));
+
+        for (Book book:books) {
+            unitsSold.getData().add(new XYChart.Data<>(book.getBookName(), book.getBooksSold()));
+        }
+
+        return unitsSold;
     }
 }
