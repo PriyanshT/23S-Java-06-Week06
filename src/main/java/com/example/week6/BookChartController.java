@@ -7,6 +7,7 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.RadioButton;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,6 +24,9 @@ public class BookChartController implements Initializable {
     @FXML
     private NumberAxis numberAxis;
 
+    @FXML
+    private RadioButton availableRadioButton;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         barChart.getData().addAll(DBUtility.retrieveBookSalesFromDB());
@@ -36,6 +40,16 @@ public class BookChartController implements Initializable {
         unitsSold.getData().add(new XYChart.Data<>("FakeBook3", 60));
 
         barChart.getData().addAll(unitsSold);
+    }
+
+    @FXML
+    void availableRadioButton_onClick(ActionEvent event) {
+        barChart.getData().clear();
+        if(availableRadioButton.isSelected()){
+            barChart.getData().addAll(DBUtility.retrieveAvailableBookSalesFromDB());
+        }else{
+            barChart.getData().addAll(DBUtility.retrieveBookSalesFromDB());
+        }
     }
 
     @FXML

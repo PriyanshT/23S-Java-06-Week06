@@ -117,4 +117,17 @@ public class DBUtility {
 
         return unitsSold;
     }
+
+    public static XYChart.Series<String, Integer> retrieveAvailableBookSalesFromDB() {
+        XYChart.Series<String, Integer> unitsSold = new XYChart.Series<>();
+        ArrayList<Book> books = retrieveBooksFromDB();
+
+        for (Book book:books) {
+            if(book.isAvailable()) {
+                unitsSold.getData().add(new XYChart.Data<>(book.getBookName(), book.getBooksSold()));
+            }
+        }
+
+        return unitsSold;
+    }
 }
