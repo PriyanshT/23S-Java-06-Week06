@@ -106,6 +106,7 @@ public class DBUtility {
     public static XYChart.Series<String, Integer> retrieveBookSalesFromDB() {
         XYChart.Series<String, Integer> unitsSold = new XYChart.Series<>();
         ArrayList<Book> books = retrieveBooksFromDB();
+        unitsSold.setName("2023");
 
 //        unitsSold.getData().add(new XYChart.Data<>("FakeBook1", 20));
 //        unitsSold.getData().add(new XYChart.Data<>("FakeBook2", 40));
