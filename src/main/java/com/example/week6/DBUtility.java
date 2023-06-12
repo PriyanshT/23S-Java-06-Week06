@@ -69,12 +69,13 @@ public class DBUtility {
         return bookID;
     }
 
-    public static ArrayList<Book> retrieveBooksFromDB(){
+    public static ArrayList<Book> retrieveBooksFromDB(String clause){
         ArrayList<Book> books = new ArrayList<>();
         String sql = "SELECT book.book_id, book.book_name, book.author, book.genre, book.price, book.is_available, COUNT(bookSales.sale_id) AS 'unit_sold'\n" +
                 "FROM book\n" +
                 "INNER JOIN bookSales\n" +
                 "ON book.book_id = bookSales.book_id\n" +
+                "WHERE " + clause + "\n" +
                 "GROUP BY book.book_id;";
 
         // try with resource block
@@ -105,7 +106,7 @@ public class DBUtility {
 
     public static XYChart.Series<String, Integer> retrieveBookSalesFromDB() {
         XYChart.Series<String, Integer> unitsSold = new XYChart.Series<>();
-        ArrayList<Book> books = retrieveBooksFromDB();
+        ArrayList<Book> books = retrieveBooksFromDB("1");
         unitsSold.setName("2023");
 
 //        unitsSold.getData().add(new XYChart.Data<>("FakeBook1", 20));
@@ -121,7 +122,7 @@ public class DBUtility {
 
     public static XYChart.Series<String, Integer> retrieveAvailableBookSalesFromDB() {
         XYChart.Series<String, Integer> unitsSold = new XYChart.Series<>();
-        ArrayList<Book> books = retrieveBooksFromDB();
+        ArrayList<Book> books = retrieveBooksFromDB("1");
 
         for (Book book:books) {
             if(book.isAvailable()) {

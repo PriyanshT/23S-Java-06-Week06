@@ -3,6 +3,7 @@ package com.example.week6;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -36,6 +37,12 @@ public class BookTableController implements Initializable {
     @FXML
     private TableColumn<Book, Double> priceColumn;
 
+    @FXML
+    private CheckBox availableCheckBox;
+
+    @FXML
+    private CheckBox expensiveCheckBox;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -49,7 +56,21 @@ public class BookTableController implements Initializable {
         availableColumn.setCellValueFactory(new PropertyValueFactory<>("available"));
         booksSoldColumn.setCellValueFactory(new PropertyValueFactory<>("booksSold"));
 
-        tableView.getItems().addAll(DBUtility.retrieveBooksFromDB());
+        tableView.getItems().addAll(DBUtility.retrieveBooksFromDB("1"));
+    }
+
+    @FXML
+    void manipulateTable(ActionEvent event) {
+        tableView.getItems().clear();
+        if(expensiveCheckBox.isSelected() && availableCheckBox.isSelected()){
+            tableView.getItems().addAll(DBUtility.retrieveBooksFromDB("price > 20 AND is_available = true"));
+        }else if(expensiveCheckBox.isSelected() && !availableCheckBox.isSelected()){
+            tableView.getItems().addAll(DBUtility.retrieveBooksFromDB("price > 20"));
+        }else if(!expensiveCheckBox.isSelected() && availableCheckBox.isSelected()){
+            tableView.getItems().addAll(DBUtility.retrieveBooksFromDB("is_available = true"));
+        }else{
+            tableView.getItems().addAll(DBUtility.retrieveBooksFromDB("1"));
+        }
     }
 
     @FXML
