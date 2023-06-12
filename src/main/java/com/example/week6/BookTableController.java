@@ -58,7 +58,7 @@ public class BookTableController implements Initializable {
     }
 
     @FXML
-    void viewChart_onClick(ActionEvent event) {
-
+    void viewChart_onClick(ActionEvent event) throws IOException {
+        SceneChanger.changeScenes(event, "book-chart-view.fxml", "Chart View");
     }
 }

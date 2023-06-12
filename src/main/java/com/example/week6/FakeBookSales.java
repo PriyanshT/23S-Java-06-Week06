@@ -26,7 +26,7 @@ public class FakeBookSales {
         }
     }
 
-    public static void main(String[] args) {
-        generateSQL();
-    }
+//    public static void main(String[] args) {
+//        generateSQL();
+//    }
 }
