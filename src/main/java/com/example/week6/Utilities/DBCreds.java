@@ -1,4 +1,4 @@
-package com.example.week6;
+package com.example.week6.Utilities;
 
 import java.io.IOException;
 import java.nio.file.Files;

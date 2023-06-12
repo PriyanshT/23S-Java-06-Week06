@@ -1,5 +1,8 @@
-package com.example.week6;
+package com.example.week6.Controller;
 
+import com.example.week6.Utilities.DBUtility;
+import com.example.week6.Model.Book;
+import com.example.week6.Utilities.SceneChanger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

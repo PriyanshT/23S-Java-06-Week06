@@ -1,4 +1,4 @@
-package com.example.week6;
+package com.example.week6.Model;
 
 import java.util.Arrays;
 import java.util.List;

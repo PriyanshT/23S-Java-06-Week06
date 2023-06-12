@@ -1,11 +1,11 @@
-package com.example.week6;
+package com.example.week6.Utilities;
 
+import com.example.week6.Model.Book;
 import javafx.scene.chart.XYChart;
 
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Collection;
 
 public class DBUtility {
     // user, pass and connectionString
